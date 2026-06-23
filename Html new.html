@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>amazon.eg</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        /* 1. هنا بنلغي الهوامش الافتراضية للمتصفح عشان الشريط الأسود يملى الشاشة */
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* 2. تعديل تنسيق الهيدر والكتابة جواه */
+        header {
+            background-color: black;
+            color: white;
+            padding: 20px;
+            width: 100%;
+            box-sizing: border-box;
+            align-self: stretch;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 12px;
+            position: relative;
+            font-family: Arial, sans-serif;
+            /* تغيير نوع الخط */
+            font-size: 24px;
+            /* تكبير حجم الخط */
+        }
+
+        .header-menu {
+            position: relative;
+            margin-left: auto;
+            z-index: 2;
+        }
+
+        .menu-button {
+            border: 0;
+            background: transparent;
+            cursor: pointer;
+            padding: 8px 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 4px;
+        }
+
+        .menu-button span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: white;
+            border-radius: 999px;
+        }
+
+        .menu-dropdown {
+            position: absolute;
+            top: calc(100% + 10px);
+            right: 0;
+            min-width: 180px;
+            background: #111;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 12px;
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.28);
+            padding: 8px 0;
+            display: none;
+        }
+
+        .header-menu.open .menu-dropdown {
+            display: block;
+        }
+
+        .menu-dropdown a {
+            display: block;
+            padding: 10px 16px;
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .menu-dropdown a:hover {
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        .main-content {
+            display: none;
+        }
+
+        .product-photo {
+            width: 180px;
+            height: 54px;
+            border-radius: 0;
+            object-fit: cover;
+            cursor: pointer;
+        }
+
+        .header-title {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            margin: 0;
+            color: white;
+            font-size: 32px;
+            font-weight: 700;
+            line-height: 1;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+
+        <img class="product-photo"
+            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='54' viewBox='0 0 180 54'%3E%3Ctext x='6' y='28' font-family='Arial, sans-serif' font-size='26' font-weight='700' fill='%23ffffff'%3Eamazon%3C/text%3E%3Cpath d='M48 38 C70 50, 112 50, 158 31' fill='none' stroke='%23ff9900' stroke-width='5' stroke-linecap='round'/%3E%3Cpath d='M150 28 L158 31 L154 39' fill='none' stroke='%23ff9900' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"
+            alt="Amazon logo" onclick="location.reload()">
+        <div class="header-menu" id="headerMenu">
+            <button class="menu-button" type="button" onclick="toggleMenu()" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="menu-dropdown" id="menuDropdown">
+                <a href="https://www.amazon.eg?&linkCode=ll2&tag=michaeljose0f-21&linkId=bbc6bbbeb92296464992df1f86f151d4&ref_=as_li_ss_tl"
+                    target="_blank" rel="noopener" onclick="closeMenu()">Amazon Home</a>
+                <a href="https://www.amazon.com/gp/help/customer/display.html" target="_blank" rel="noopener"
+                    onclick="closeMenu()">Help</a>
+                <a href="https://www.amazon.com/gp/css/homepage.html" target="_blank" rel="noopener"
+                    onclick="closeMenu()">Orders</a>
+            </div>
+        </div>
+    </header>
+    <h1 style="color: black;">Cashback</h1>
+    <h2 style="color: darkred;">2% - 10%</h2>
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            text-align: center;
+            gap: 12px;
+            padding-top: 16px;
+        }
+
+        .card {
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            border: 4px solid rgb(255, 140, 0);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+            text-align: center;
+        }
+
+        h2 {
+            margin: 0;
+        }
+
+        a {
+            color: rgb(0, 0, 0);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            text-align: left;
+        }
+
+        label {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        input,
+        textarea,
+        button {
+            width: 100%;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        .info-link {
+            display: inline-block;
+            margin-top: 15px;
+            margin-bottom: 20px;
+            color: #ffffff;
+            background: rgba(0, 0, 0, 0.35);
+            padding: 10px 16px;
+            border-radius: 999px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .info-modal {
+            position: fixed;
+            inset: 0;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.45);
+            z-index: 20;
+            padding: 20px;
+        }
+
+        .info-modal.open {
+            display: flex;
+        }
+
+        .info-modal-content {
+            max-width: 360px;
+            width: 100%;
+            background: #fff;
+            color: #222;
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+            text-align: left;
+        }
+
+        .info-modal-content h2 {
+            margin-top: 0;
+        }
+
+        .info-modal-close {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: #333;
+            color: #fff;
+            cursor: pointer;
+        }
+    </style>
+</body>
+
+<body>
+
+    <div class="card">
+        <form action="https://formspree.io/f/xnjkaavq" method="POST">
+            <label>
+                Your Whatsapp:
+                <input type="tel" name="phone" placeholder="Mobile number">
+            </label>
+
+            <label>
+                Your Link:
+                <input type="text" name="message" placeholder="Paste your link">
+            </label>
+            <!-- your other form fields go here -->
+            <button style="background-color:rgb(255, 213, 0);  border-radius:10px;" type="submit">Send</button>
+        </form>
+
+    </div>
+    <p style="
+    color: red;
+    font-weight: bold;
+    max-width: 400px;
+    text-align: center;
+    margin-top: 15px;
+">
+        Important: Revisit our Amazon link every 24 hours before making a purchase to get cashback.
+    </p>
+
+    <!-- التعديل هنا: لينك أمازون بقى فوق How it works مباشرة -->
+    <p style="margin-top: 10px; margin-bottom: 5px;">
+        <a href="https://www.amazon.eg?&linkCode=ll2&tag=michaeljose0f-21&linkId=bbc6bbbeb92296464992df1f86f151d4&ref_=as_li_ss_tl"
+            target="_blank" rel="noopener noreferrer">amazon</a>
+    </p>
+
+    <div class="info-link" onclick="openInfoWindow()" style="color: rgb(255, 238, 0) ;">How it works</div>
+
+    <div class="info-modal" id="infoModal" onclick="closeInfoWindow(event)">
+        <div class="info-modal-content" onclick="event.stopPropagation()">
+            <h2>How to get the Cashback?</h2>
+            <p>1.Fill in your mobile number and the link of the product
+            </p>
+            <p>2.Send it to get your cashback</p>
+            <p>3.Click Go Back</p>
+            <p>4.Click the <a
+                    href="https://www.amazon.eg?&linkCode=ll2&tag=michaeljose0f-21&linkId=bbc6bbbeb92296464992df1f86f151d4&ref_=as_li_ss_tl"
+                    target="_blank" rel="noopener noreferrer">amazon</a> link and buy your product</p>
+            <div class="info-modal-close" onclick="closeInfoWindow()">Close</div>
+        </div>
+    </div>
+
+    <script>
+        const headerMenu = document.getElementById('headerMenu');
+
+        function toggleMenu() {
+            if (headerMenu) {
+                headerMenu.classList.toggle('open');
+            }
+        }
+
+        function closeMenu() {
+            if (headerMenu) {
+                headerMenu.classList.remove('open');
+            }
+        }
+
+        document.addEventListener('click', function (event) {
+            if (!headerMenu || headerMenu.contains(event.target)) {
+                return;
+            }
+
+            closeMenu();
+        });
+
+        function openInfoWindow() {
+            document.getElementById('infoModal').classList.add('open');
+        }
+
+        function closeInfoWindow(event) {
+            if (event && event.target !== event.currentTarget) {
+                return;
+            }
+
+            const modal = document.getElementById('infoModal');
+
+            if (modal) {
+                modal.classList.remove('open');
+            }
+        }
+    </script>
+
+</body>
+
+</html>
